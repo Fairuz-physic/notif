@@ -11,6 +11,7 @@ if ("Notification" in window) {
     }
 } else {
     console.log("Browser tidak mendukung notifikasi.");
+    alert("Tidak dukung Notif cuy");
 }
 
 // Fungsi untuk menampilkan notifikasi
@@ -20,6 +21,7 @@ function showNotification() {
             body: "Perulangan telah mencapai angka 10",
             icon: "image/grafikk.png" // sesuaikan dengan icon Anda
         });
+        alert("Perulangan telah mencapai angka 10");
     } else {
         alert("Perulangan telah mencapai angka 10");
     }
