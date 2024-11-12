@@ -23,7 +23,7 @@ function startCounting() {
         count++;
         kotak.innerHTML = count
         console.log(count);
-        if (count === 10) {
+        if (count === 5) {
             count = 0
             showNotification();
             clearInterval(interval); // hentikan perulangan setelah mencapai 10
