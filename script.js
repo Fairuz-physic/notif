@@ -1,8 +1,16 @@
-let kotak = document.getElementById("kotak")
+let kotak = document.getElementById("kotak");
 
-// Step 1: Minta izin untuk menampilkan notifikasi
-if (Notification.permission !== "granted") {
-    Notification.requestPermission();
+// Step 1: Cek dukungan notifikasi
+if ("Notification" in window) {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission().then(permission => {
+            if (permission !== "granted") {
+                alert("Notifikasi diizinkan hanya di beberapa perangkat atau browser.");
+            }
+        });
+    }
+} else {
+    console.log("Browser tidak mendukung notifikasi.");
 }
 
 // Fungsi untuk menampilkan notifikasi
@@ -12,7 +20,8 @@ function showNotification() {
             body: "Perulangan telah mencapai angka 10",
             icon: "image/grafikk.png" // sesuaikan dengan icon Anda
         });
-        
+    } else {
+        alert("Perulangan telah mencapai angka 10");
     }
 }
 
@@ -21,10 +30,10 @@ function startCounting() {
     let count = 0;
     let interval = setInterval(() => {
         count++;
-        kotak.innerHTML = count
+        kotak.innerHTML = count;
         console.log(count);
-        if (count === 5) {
-            count = 0
+        if (count === 10) {
+            count = 0;
             showNotification();
             clearInterval(interval); // hentikan perulangan setelah mencapai 10
             window.location.href = window.location.href;
