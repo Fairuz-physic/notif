@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--<link rel="stylesheet" href="style.css"> /-->
+    <title>Notifikasi Keamanan Pintu</title>
 </head>
 <body>
-    <div class="container">
-        <div class="kotak" id="kotak"></div> 
-    </div>
+    <h1>IoT Keamanan Pintu</h1>
+    <p>Website ini akan memberikan notifikasi jika ada kebobolan.</p>
+
+    <script>
+        // Meminta izin notifikasi kepada pengguna
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+
+        // Fungsi untuk menampilkan notifikasi
+        function sendNotification() {
+            if (Notification.permission === "granted") {
+                new Notification("Pintu rumah anda kebobolan");
+            }
+        }
+
+        // Interval untuk mengirim notifikasi setiap 10 detik (10000 ms)
+        setInterval(sendNotification, 10000);
+    </script>
 </body>
-<script src="script.js"></script>/
 </html>
