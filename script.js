@@ -24,6 +24,7 @@ function startCounting() {
         kotak.innerHTML = count
         console.log(count);
         if (count === 10) {
+            count = 0
             showNotification();
             clearInterval(interval); // hentikan perulangan setelah mencapai 10
             window.location.href = window.location.href;
