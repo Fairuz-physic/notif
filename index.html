@@ -13,6 +13,7 @@
         // Meminta izin notifikasi kepada pengguna
         if (Notification.permission !== "granted") {
             Notification.requestPermission();
+            alert("tidak di izinkan")
         }
 
         // Fungsi untuk menampilkan notifikasi
