@@ -2,6 +2,7 @@ let kotak = document.getElementById("kotak");
 
 // Step 1: Cek dukungan notifikasi
 if ("Notification" in window) {
+    // Meminta izin notifikasi jika belum diberikan
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission !== "granted") {
@@ -17,10 +18,16 @@ if ("Notification" in window) {
 // Fungsi untuk menampilkan notifikasi
 function showNotification() {
     if (Notification.permission === "granted") {
-        new Notification("Hitungan selesai!", {
+        let notification = new Notification("Hitungan selesai!", {
             body: "Perulangan telah mencapai angka 10",
             icon: "image/grafikk.png" // sesuaikan dengan icon Anda
         });
+        
+        // Menutup notifikasi secara otomatis setelah 5 detik (untuk kompatibilitas Android)
+        setTimeout(() => {
+            notification.close();
+        }, 5000);
+        
         alert("Perulangan telah mencapai angka 10");
     } else {
         alert("Perulangan telah mencapai angka 10");
